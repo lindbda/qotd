@@ -36,418 +36,437 @@
     font-family: 'Nunito', sans-serif;
     font-size: var(--fs-base);
     background: var(--sky);
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
   }
 
   body::before, body::after {
-    content: '';
-    position: fixed; border-radius: 50%; opacity: 0.15; pointer-events: none;
-    animation: drift 12s ease-in-out infinite alternate;
+    content: ''; position: fixed; border-radius: 50%; opacity: 0.15;
+    pointer-events: none; animation: drift 12s ease-in-out infinite alternate;
   }
-  body::before { width: 40vw; height: 40vw; background: var(--sun);   top: -15vw; right: -10vw; }
-  body::after  { width: 35vw; height: 35vw; background: var(--coral); bottom: -12vw; left: -8vw; animation-delay: -6s; }
+  body::before { width:40vw; height:40vw; background:var(--sun);   top:-15vw; right:-10vw; }
+  body::after  { width:35vw; height:35vw; background:var(--coral); bottom:-12vw; left:-8vw; animation-delay:-6s; }
   @keyframes drift {
-    from { transform: translate(0,0) scale(1); }
-    to   { transform: translate(2vw,1.5vh) scale(1.05); }
+    from { transform:translate(0,0) scale(1); }
+    to   { transform:translate(2vw,1.5vh) scale(1.05); }
   }
 
   /* ── TOP BAR ── */
   .topbar {
-    flex-shrink: 0;
-    background: var(--coral);
+    flex-shrink: 0; background: var(--coral);
     padding: clamp(5px,.9vh,12px) var(--pad);
     display: flex; align-items: center; justify-content: space-between;
     box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-    position: relative; z-index: 10;
-    animation: slideDown 0.5s ease both; gap: 8px;
+    position: relative; z-index: 10; animation: slideDown 0.5s ease both; gap: 8px;
   }
   @keyframes slideDown {
-    from { transform: translateY(-40px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
+    from { transform:translateY(-40px); opacity:0; }
+    to   { transform:translateY(0); opacity:1; }
   }
-  .topbar-left  { display: flex; align-items: center; gap: clamp(6px,1vw,14px); min-width: 0; }
-  .topbar-right { display: flex; align-items: center; gap: clamp(5px,.8vw,10px); flex-shrink: 0; }
+  .topbar-left  { display:flex; align-items:center; gap:clamp(6px,1vw,14px); min-width:0; }
+  .topbar-right { display:flex; align-items:center; gap:clamp(5px,.8vw,10px); flex-shrink:0; }
 
   .topbar-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: var(--fs-xl); color: #fff; letter-spacing: 1px;
-    text-shadow: 1px 2px 0 rgba(0,0,0,0.18);
-    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    font-family:'Fredoka One',cursive; font-size:var(--fs-xl); color:#fff;
+    letter-spacing:1px; text-shadow:1px 2px 0 rgba(0,0,0,0.18);
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
   }
-  .topbar-title .pencil { animation: wobble 2s ease-in-out infinite; }
+  .topbar-title .pencil { animation:wobble 2s ease-in-out infinite; }
   @keyframes wobble { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
 
   .prompt-nav {
-    display: flex; align-items: center; gap: clamp(4px,.6vw,8px);
-    background: rgba(255,255,255,0.18); border-radius: 50px;
-    padding: clamp(3px,.5vh,7px) clamp(8px,1.2vw,16px);
+    display:flex; align-items:center; gap:clamp(4px,.6vw,8px);
+    background:rgba(255,255,255,0.18); border-radius:50px;
+    padding:clamp(3px,.5vh,7px) clamp(8px,1.2vw,16px);
   }
   .nav-btn {
-    background: rgba(255,255,255,0.85); color: var(--coral);
-    border: none; border-radius: 50%;
-    width: clamp(34px,3.5vw,44px); height: clamp(34px,3.5vw,44px);
-    font-size: var(--fs-md); font-weight: 900; cursor: pointer;
-    transition: transform 0.15s, background 0.15s;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    background:rgba(255,255,255,0.85); color:var(--coral); border:none; border-radius:50%;
+    width:clamp(34px,3.5vw,44px); height:clamp(34px,3.5vw,44px);
+    font-size:var(--fs-md); font-weight:900; cursor:pointer;
+    transition:transform 0.15s, background 0.15s;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
-  .nav-btn:hover { transform: scale(1.12); background: #fff; }
-  .nav-btn:disabled { opacity: 0.35; cursor: default; transform: none; }
+  .nav-btn:hover { transform:scale(1.12); background:#fff; }
+  .nav-btn:disabled { opacity:0.35; cursor:default; transform:none; }
   .prompt-counter {
-    font-family: 'Fredoka One', cursive; font-size: var(--fs-sm); color: #fff;
-    white-space: nowrap; min-width: clamp(36px,4vw,56px); text-align: center;
+    font-family:'Fredoka One',cursive; font-size:var(--fs-sm); color:#fff;
+    white-space:nowrap; min-width:clamp(36px,4vw,56px); text-align:center;
   }
 
   .topbar-btn {
-    border: none; border-radius: 50px;
-    padding: clamp(5px,.8vh,10px) clamp(10px,1.6vw,20px);
-    font-family: 'Fredoka One', cursive; font-size: var(--fs-sm);
-    cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    transition: transform 0.15s;
-    display: flex; align-items: center; gap: 6px;
-    min-height: 44px; white-space: nowrap;
+    border:none; border-radius:50px;
+    padding:clamp(5px,.8vh,10px) clamp(10px,1.6vw,20px);
+    font-family:'Fredoka One',cursive; font-size:var(--fs-sm);
+    cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12);
+    transition:transform 0.15s; display:flex; align-items:center; gap:6px;
+    min-height:44px; white-space:nowrap;
   }
-  .topbar-btn:hover { transform: scale(1.05); }
-  .timer-btn { background: #fff; color: var(--coral); }
-  .edit-btn  { background: #FFF9C4; color: var(--orange); }
+  .topbar-btn:hover { transform:scale(1.05); }
+  .timer-btn  { background:#fff; color:var(--coral); }
+  .edit-btn   { background:#FFF9C4; color:var(--orange); }
+  .show-btn   { background:#E8F5E9; color:var(--green); }
   .timer-btn .dot { width:10px; height:10px; border-radius:50%; background:var(--coral); animation:pulse 1.2s ease infinite; display:none; }
-  .timer-btn .dot.running { display: inline-block; }
+  .timer-btn .dot.running { display:inline-block; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
 
   /* ── MAIN GRID ── */
   .main {
-    flex: 1; min-height: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    gap: var(--gap);
-    padding: var(--gap) var(--pad);
-    position: relative; z-index: 5;
+    flex:1; min-height:0;
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto;
+    gap:var(--gap); padding:var(--gap) var(--pad);
+    position:relative; z-index:5;
   }
 
   /* ── PROMPT CARD ── */
   .prompt-card {
-    grid-column: 1 / -1;
-    background: var(--card-bg); border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: clamp(8px,1.2vh,18px) var(--pad);
-    display: flex; align-items: center;
-    gap: clamp(8px,1vw,18px);
-    border-left: clamp(4px,.6vw,10px) solid var(--sun);
-    animation: fadeUp 0.5s 0.1s ease both;
+    grid-column:1 / -1; background:var(--card-bg); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:clamp(8px,1.2vh,18px) var(--pad);
+    display:flex; align-items:center; gap:clamp(8px,1vw,18px);
+    border-left:clamp(4px,.6vw,10px) solid var(--sun);
+    animation:fadeUp 0.5s 0.1s ease both;
   }
-  .prompt-emoji { font-size: var(--fs-2xl); flex-shrink: 0; line-height: 1; }
-  .prompt-inner { flex: 1; min-width: 0; }
+  .prompt-emoji { font-size:var(--fs-2xl); flex-shrink:0; line-height:1; }
+  .prompt-inner { flex:1; min-width:0; }
   .prompt-label {
-    font-family: 'Fredoka One', cursive; color: var(--orange);
-    font-size: var(--fs-xs); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;
+    font-family:'Fredoka One',cursive; color:var(--orange);
+    font-size:var(--fs-xs); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;
+  }
+  @keyframes fadeUp {
+    from { transform:translateY(20px); opacity:0; }
+    to   { transform:translateY(0); opacity:1; }
   }
 
-  /* ── INLINE SENTENCE (prompt + frames) ── */
+  /* ── INLINE SENTENCE ── */
   .inline-sentence {
-    font-family: 'Fredoka One', cursive;
-    font-size: var(--fs-lg); color: #1a1a2e;
-    line-height: 1.6;
-    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    font-family:'Fredoka One',cursive; font-size:var(--fs-lg); color:#1a1a2e;
+    line-height:1.6; display:flex; flex-wrap:wrap; align-items:center; gap:6px;
   }
   .inline-sentence.frame-sentence {
-    font-size: var(--fs-sm);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800; color: #0D47A1;
+    font-size:var(--fs-sm); font-family:'Nunito',sans-serif;
+    font-weight:800; color:#0D47A1;
   }
 
-  /* The droppable blank slot */
+  /* Blank slot */
   .blank-slot {
-    display: inline-flex; align-items: center; justify-content: center;
-    min-width: clamp(70px, 9vw, 130px);
-    height: clamp(34px, 4vh, 48px);
-    border-radius: 50px;
-    border: 2.5px dashed var(--coral);
-    background: #FFF3E0;
-    padding: 0 clamp(8px,1vw,14px);
-    cursor: default;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
-    position: relative;
-    vertical-align: middle;
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:clamp(70px,9vw,130px); height:clamp(34px,4vh,48px);
+    border-radius:50px; border:2.5px dashed var(--coral); background:#FFF3E0;
+    padding:0 clamp(8px,1vw,14px); cursor:default;
+    transition:background 0.2s, border-color 0.2s, transform 0.15s;
+    vertical-align:middle;
   }
-  .blank-slot.drag-over-slot {
-    background: #FFE0B2;
-    border-color: var(--orange);
-    border-style: solid;
-    transform: scale(1.06);
-  }
-  .blank-slot.filled {
-    border-style: solid;
-    border-color: #F9A825;
-    background: #FFD600;
-    cursor: pointer;
-  }
-  .blank-slot.filled:hover { background: #FFECB3; }
+  .blank-slot.drag-over-slot { background:#FFE0B2; border-color:var(--orange); border-style:solid; transform:scale(1.06); }
+  .blank-slot.filled { border-style:solid; border-color:#F9A825; background:#FFD600; cursor:pointer; }
+  .blank-slot.filled:hover { background:#FFECB3; }
 
-  /* Frame blank slots are slightly smaller / blue tinted */
   .frame-sentence .blank-slot {
-    min-width: clamp(55px, 7vw, 110px);
-    height: clamp(28px, 3.2vh, 40px);
-    border-color: #90CAF9;
-    background: #E3F2FD;
+    min-width:clamp(55px,7vw,110px); height:clamp(28px,3.2vh,40px);
+    border-color:#90CAF9; background:#E3F2FD;
   }
-  .frame-sentence .blank-slot.drag-over-slot { background: #BBDEFB; border-color: var(--blue); }
-  .frame-sentence .blank-slot.filled { background: #FFD600; border-color: #F9A825; }
+  .frame-sentence .blank-slot.drag-over-slot { background:#BBDEFB; border-color:var(--blue); }
+  .frame-sentence .blank-slot.filled { background:#FFD600; border-color:#F9A825; }
 
   .blank-slot .slot-label {
-    font-family: 'Nunito', sans-serif;
-    font-size: var(--fs-xs); font-weight: 800;
-    color: #BFAC00; font-style: italic; pointer-events: none;
-    white-space: nowrap;
+    font-family:'Nunito',sans-serif; font-size:var(--fs-xs); font-weight:800;
+    color:#BFAC00; font-style:italic; pointer-events:none; white-space:nowrap;
   }
-  .blank-slot.filled .slot-label { display: none; }
-
+  .blank-slot.filled .slot-label { display:none; }
   .blank-slot .slot-word {
-    font-family: 'Nunito', sans-serif;
-    font-size: var(--fs-sm); font-weight: 900;
-    color: #4a3800; pointer-events: none;
-    white-space: nowrap; display: none;
+    font-family:'Nunito',sans-serif; font-size:var(--fs-sm); font-weight:900;
+    color:#4a3800; pointer-events:none; white-space:nowrap; display:none;
   }
-  .blank-slot.filled .slot-word { display: inline; }
+  .blank-slot.filled .slot-word { display:inline; }
+  .blank-slot .slot-remove { font-size:0.7em; opacity:0.5; margin-left:4px; pointer-events:none; }
 
-  .blank-slot .slot-remove {
-    font-size: 0.7em; opacity: 0.5; margin-left: 4px;
-    pointer-events: none;
-  }
-
-  /* Clear button */
   .clear-btn {
-    background: none; border: 1.5px solid #ccc; border-radius: 50px;
-    padding: 4px 14px; font-family: 'Nunito', sans-serif;
-    font-size: var(--fs-xs); font-weight: 700; color: #888;
-    cursor: pointer; transition: all 0.15s; min-height: 36px; margin-left: auto;
-    flex-shrink: 0; align-self: center;
+    background:none; border:1.5px solid #ccc; border-radius:50px;
+    padding:4px 14px; font-family:'Nunito',sans-serif;
+    font-size:var(--fs-xs); font-weight:700; color:#888;
+    cursor:pointer; transition:all 0.15s; min-height:36px;
+    margin-left:auto; flex-shrink:0; align-self:center;
   }
-  .clear-btn:hover { background: #fee; border-color: var(--coral); color: var(--coral); }
+  .clear-btn:hover { background:#fee; border-color:var(--coral); color:var(--coral); }
 
   @keyframes chipLand {
-    from { transform: scale(0.5) rotate(-6deg); opacity: 0; }
-    to   { transform: scale(1) rotate(0); opacity: 1; }
+    from { transform:scale(0.5) rotate(-6deg); opacity:0; }
+    to   { transform:scale(1) rotate(0); opacity:1; }
   }
-  .slot-fill-anim { animation: chipLand 0.22s cubic-bezier(.34,1.56,.64,1) both; }
+  .slot-fill-anim { animation:chipLand 0.22s cubic-bezier(.34,1.56,.64,1) both; }
 
-  /* ── SUPPORT CARDS ── */
+  .slot-hint {
+    font-family:'Fredoka One',cursive; font-size:var(--fs-xs); color:var(--orange);
+    letter-spacing:1px; display:flex; align-items:center; gap:8px; margin-top:4px;
+  }
+
+  /* ── CARDS ── */
   .card {
-    background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: clamp(7px,1vh,14px) var(--pad);
-    display: flex; flex-direction: column; gap: clamp(5px,.7vh,9px);
-    min-height: 0; overflow: hidden; animation: fadeUp 0.5s ease both;
+    background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:clamp(7px,1vh,14px) var(--pad);
+    display:flex; flex-direction:column; gap:clamp(5px,.7vh,9px);
+    min-height:0; overflow:hidden; animation:fadeUp 0.5s ease both;
   }
-  .card:nth-child(2) { animation-delay: 0.15s; }
-  .card:nth-child(3) { animation-delay: 0.25s; }
-  .card:nth-child(4) { animation-delay: 0.35s; }
-  @keyframes fadeUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-  }
+  .card:nth-child(2){animation-delay:0.15s}
+  .card:nth-child(3){animation-delay:0.25s}
+  .card:nth-child(4){animation-delay:0.35s}
 
   .card-header {
-    display: flex; align-items: center; gap: 8px;
-    padding-bottom: clamp(4px,.5vh,7px);
-    border-bottom: 2.5px solid currentColor; flex-shrink: 0;
+    display:flex; align-items:center; gap:8px;
+    padding-bottom:clamp(4px,.5vh,7px);
+    border-bottom:2.5px solid currentColor; flex-shrink:0;
   }
-  .card-header .icon { font-size: var(--fs-lg); line-height: 1; }
-  .card-header h2 { font-family: 'Fredoka One', cursive; font-size: var(--fs-md); letter-spacing: 0.5px; }
+  .card-header .icon { font-size:var(--fs-lg); line-height:1; }
+  .card-header h2 { font-family:'Fredoka One',cursive; font-size:var(--fs-md); letter-spacing:0.5px; }
 
-  .card.sentence-frame { border-top: clamp(4px,.5vw,7px) solid var(--blue); }
-  .card.sentence-frame .card-header { color: var(--blue); border-color: var(--blue); }
-  .card.word-bank      { border-top: clamp(4px,.5vw,7px) solid var(--green); }
-  .card.word-bank .card-header { color: var(--green); border-color: var(--green); }
-  .card.checklist      { border-top: clamp(4px,.5vw,7px) solid var(--purple); grid-column: 1 / -1; }
-  .card.checklist .card-header { color: var(--purple); border-color: var(--purple); }
+  .card.sentence-frame { border-top:clamp(4px,.5vw,7px) solid var(--blue); }
+  .card.sentence-frame .card-header { color:var(--blue); border-color:var(--blue); }
+  .card.word-bank      { border-top:clamp(4px,.5vw,7px) solid var(--green); }
+  .card.word-bank .card-header { color:var(--green); border-color:var(--green); }
+  .card.checklist      { border-top:clamp(4px,.5vw,7px) solid var(--purple); grid-column:1 / -1; }
+  .card.checklist .card-header { color:var(--purple); border-color:var(--purple); }
 
-  /* Frame list */
-  .frame-list { display: flex; flex-direction: column; gap: clamp(5px,.7vh,9px); }
+  .frame-list { display:flex; flex-direction:column; gap:clamp(5px,.7vh,9px); }
   .frame-item {
-    background: #E3F2FD; border-radius: clamp(6px,.8vw,12px);
-    padding: clamp(5px,.7vh,10px) clamp(8px,1vw,14px);
+    background:#E3F2FD; border-radius:clamp(6px,.8vw,12px);
+    padding:clamp(5px,.7vh,10px) clamp(8px,1vw,14px);
   }
 
-  /* Word bank */
-  .word-bank-grid { display: flex; flex-wrap: wrap; gap: clamp(5px,.8vw,10px); align-content: flex-start; }
+  .word-bank-grid { display:flex; flex-wrap:wrap; gap:clamp(5px,.8vw,10px); align-content:flex-start; }
   .word-chip {
-    background: #E8F5E9; border: 2px solid #43A047; border-radius: 50px;
-    padding: clamp(5px,.7vh,9px) clamp(10px,1.4vw,18px);
-    font-size: var(--fs-sm); font-weight: 800; color: var(--green);
-    cursor: grab; transition: transform 0.15s, background 0.15s, opacity 0.15s;
-    user-select: none; touch-action: none;
-    min-height: 44px; display: flex; align-items: center;
+    background:#E8F5E9; border:2px solid #43A047; border-radius:50px;
+    padding:clamp(5px,.7vh,9px) clamp(10px,1.4vw,18px);
+    font-size:var(--fs-sm); font-weight:800; color:var(--green);
+    cursor:grab; transition:transform 0.15s, background 0.15s, opacity 0.15s;
+    user-select:none; touch-action:none; min-height:44px; display:flex; align-items:center;
   }
-  .word-chip:hover { transform: scale(1.1); background: #C8E6C9; }
-  .word-chip.dragging { opacity: 0.35; cursor: grabbing; transform: scale(0.95); }
+  .word-chip:hover { transform:scale(1.1); background:#C8E6C9; }
+  .word-chip.dragging { opacity:0.35; cursor:grabbing; transform:scale(0.95); }
 
-  /* Ghost */
   .drag-ghost {
-    position: fixed; pointer-events: none; z-index: 9999;
-    background: #43A047; color: #fff; border-radius: 50px;
-    padding: 6px 16px; font-family: 'Nunito', sans-serif;
-    font-size: var(--fs-md); font-weight: 800;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    transform: translate(-50%,-50%) rotate(-3deg) scale(1.15);
-    white-space: nowrap;
+    position:fixed; pointer-events:none; z-index:9999;
+    background:#43A047; color:#fff; border-radius:50px;
+    padding:6px 16px; font-family:'Nunito',sans-serif;
+    font-size:var(--fs-md); font-weight:800;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    transform:translate(-50%,-50%) rotate(-3deg) scale(1.15); white-space:nowrap;
   }
 
-  /* Checklist */
-  .checklist-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: clamp(5px,.8vh,10px); }
+  .checklist-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(5px,.8vh,10px); }
   .check-item {
-    display: flex; align-items: center; gap: clamp(5px,.8vw,10px);
-    background: #F3E5F5; border-radius: clamp(8px,1vw,14px);
-    padding: clamp(6px,.8vh,11px) clamp(8px,1vw,14px);
-    cursor: pointer; transition: background 0.2s, transform 0.15s;
-    user-select: none; min-height: 44px;
+    display:flex; align-items:center; gap:clamp(5px,.8vw,10px);
+    background:#F3E5F5; border-radius:clamp(8px,1vw,14px);
+    padding:clamp(6px,.8vh,11px) clamp(8px,1vw,14px);
+    cursor:pointer; transition:background 0.2s, transform 0.15s;
+    user-select:none; min-height:44px;
   }
-  .check-item:hover { transform: scale(1.02); }
-  .check-item.checked { background: #CE93D8; }
+  .check-item:hover { transform:scale(1.02); }
+  .check-item.checked { background:#CE93D8; }
   .check-box {
-    width: clamp(28px,3.2vw,38px); height: clamp(28px,3.2vw,38px);
-    border-radius: 7px; border: 2.5px solid var(--purple);
-    background: #fff; display: flex; align-items: center; justify-content: center;
-    font-size: var(--fs-md); font-weight: 900; color: var(--purple);
-    flex-shrink: 0; transition: background 0.2s;
+    width:clamp(28px,3.2vw,38px); height:clamp(28px,3.2vw,38px);
+    border-radius:7px; border:2.5px solid var(--purple);
+    background:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:var(--fs-md); font-weight:900; color:var(--purple);
+    flex-shrink:0; transition:background 0.2s;
   }
-  .check-item.checked .check-box { background: var(--purple); color: #fff; }
-  .check-label { font-size: var(--fs-sm); font-weight: 800; color: #4A148C; line-height: 1.2; }
+  .check-item.checked .check-box { background:var(--purple); color:#fff; }
+  .check-label { font-size:var(--fs-sm); font-weight:800; color:#4A148C; line-height:1.2; }
+
+  /* ══════════════════════════════════════
+     SHOW SENTENCE — PICKER OVERLAY
+  ══════════════════════════════════════ */
+  .picker-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.5);
+    display:none; align-items:center; justify-content:center; z-index:150;
+  }
+  .picker-overlay.show { display:flex; }
+  .picker-box {
+    background:#fff; border-radius:24px;
+    padding:clamp(20px,3vh,36px) clamp(24px,3vw,44px);
+    width:min(90vw,600px);
+    box-shadow:0 16px 50px rgba(0,0,0,0.3);
+    animation:popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
+    display:flex; flex-direction:column; gap:clamp(10px,1.5vh,18px);
+  }
+  .picker-title {
+    font-family:'Fredoka One',cursive; font-size:var(--fs-xl); color:var(--green);
+    display:flex; align-items:center; gap:10px;
+  }
+  .picker-subtitle {
+    font-family:'Nunito',sans-serif; font-size:var(--fs-sm); font-weight:700;
+    color:#777; margin-top:-8px;
+  }
+  .picker-options { display:flex; flex-direction:column; gap:10px; }
+  .picker-option {
+    background:#F1F8E9; border:2.5px solid #A5D6A7; border-radius:16px;
+    padding:clamp(10px,1.5vh,18px) clamp(14px,2vw,24px);
+    cursor:pointer; transition:background 0.15s, transform 0.15s, border-color 0.15s;
+    display:flex; align-items:center; gap:12px;
+  }
+  .picker-option:hover { background:#DCEDC8; border-color:#66BB6A; transform:scale(1.01); }
+  .picker-option-badge {
+    font-family:'Fredoka One',cursive; font-size:var(--fs-xs);
+    background:var(--green); color:#fff; border-radius:50px;
+    padding:3px 10px; white-space:nowrap; flex-shrink:0;
+  }
+  .picker-option.is-prompt .picker-option-badge { background:var(--orange); }
+  .picker-option-text {
+    font-family:'Nunito',sans-serif; font-size:var(--fs-sm); font-weight:800;
+    color:#1a1a2e; line-height:1.4;
+  }
+  .picker-cancel {
+    background:#eee; border:none; border-radius:50px;
+    padding:10px 24px; font-family:'Fredoka One',cursive; font-size:var(--fs-sm);
+    color:#555; cursor:pointer; align-self:flex-end; transition:transform 0.15s; min-height:44px;
+  }
+  .picker-cancel:hover { transform:scale(1.05); }
+
+  /* ══════════════════════════════════════
+     SHOW SENTENCE — DISPLAY OVERLAY
+  ══════════════════════════════════════ */
+  .display-overlay {
+    position:fixed; inset:0;
+    background:rgba(10,30,60,0.82);
+    display:none; align-items:center; justify-content:center;
+    z-index:160; cursor:pointer;
+    animation:fadeBg 0.25s ease both;
+  }
+  .display-overlay.show { display:flex; }
+  @keyframes fadeBg { from{opacity:0} to{opacity:1} }
+
+  .display-box {
+    background:#fff; border-radius:28px;
+    padding:clamp(32px,5vh,64px) clamp(40px,6vw,80px);
+    width:min(94vw, 1000px);
+    box-shadow:0 24px 80px rgba(0,0,0,0.4);
+    animation:popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
+    display:flex; flex-direction:column; gap:clamp(20px,3vh,36px);
+    pointer-events:none; /* let clicks fall through to overlay for dismiss */
+  }
+  @keyframes popIn {
+    from { transform:scale(0.75); opacity:0; }
+    to   { transform:scale(1); opacity:1; }
+  }
+
+  .display-dismiss-hint {
+    font-family:'Fredoka One',cursive; font-size:var(--fs-sm);
+    color:#bbb; text-align:center; letter-spacing:1px;
+  }
+
+  /* The two sentence rows inside the display box */
+  .display-row {
+    display:flex; flex-direction:column; gap:clamp(6px,1vh,12px);
+  }
+  .display-row-label {
+    font-family:'Fredoka One',cursive; font-size:var(--fs-sm);
+    letter-spacing:2px; text-transform:uppercase;
+  }
+  .display-row.filled-row .display-row-label { color:var(--orange); }
+  .display-row.blank-row  .display-row-label { color:#90CAF9; }
+
+  /* The big sentence text */
+  .display-sentence {
+    font-family:'Fredoka One',cursive;
+    font-size:clamp(1.8rem, 5vw, 3.8rem);
+    line-height:1.35; color:#1a1a2e;
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:clamp(6px,1vw,14px);
+  }
+
+  /* Filled word chip inside display */
+  .display-word-chip {
+    display:inline-flex; align-items:center;
+    background:#FFD600; border:3px solid #F9A825;
+    border-radius:50px; padding:4px clamp(10px,1.5vw,20px);
+    font-family:'Fredoka One',cursive;
+    font-size:clamp(1.8rem, 5vw, 3.8rem);
+    color:#4a3800; line-height:1.35;
+    white-space:nowrap;
+  }
+
+  /* Blank underline inside display */
+  .display-blank {
+    display:inline-block;
+    border-bottom:5px solid #90CAF9;
+    min-width:clamp(80px,12vw,200px);
+    height:clamp(1.8rem, 5vw, 3.8rem);
+    vertical-align:bottom;
+  }
+
+  .display-divider {
+    border:none; border-top:2px solid #eee; margin:0;
+  }
 
   /* ── EDIT MODAL ── */
   .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-    display: none; align-items: center; justify-content: center; z-index: 200;
+    position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    display:none; align-items:center; justify-content:center; z-index:200;
   }
-  .modal-overlay.show { display: flex; }
+  .modal-overlay.show { display:flex; }
   .modal {
-    background: #fff; border-radius: 24px;
-    padding: clamp(20px,3vh,36px) clamp(24px,3vw,44px);
-    width: min(92vw, 720px); max-height: 90vh; overflow-y: auto;
-    box-shadow: 0 16px 50px rgba(0,0,0,0.3);
-    animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
-    display: flex; flex-direction: column; gap: clamp(10px,1.5vh,18px);
+    background:#fff; border-radius:24px;
+    padding:clamp(20px,3vh,36px) clamp(24px,3vw,44px);
+    width:min(92vw,720px); max-height:90vh; overflow-y:auto;
+    box-shadow:0 16px 50px rgba(0,0,0,0.3);
+    animation:popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
+    display:flex; flex-direction:column; gap:clamp(10px,1.5vh,18px);
   }
-  @keyframes popIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-  .modal-title { font-family: 'Fredoka One', cursive; font-size: var(--fs-xl); color: var(--orange); display: flex; align-items: center; gap: 10px; }
-  .modal-section-title { font-family: 'Fredoka One', cursive; font-size: var(--fs-md); color: var(--blue); margin-bottom: 4px; }
-  .modal label { font-family: 'Nunito', sans-serif; font-size: var(--fs-sm); font-weight: 700; color: #444; display: block; margin-bottom: 4px; }
+  .modal-title { font-family:'Fredoka One',cursive; font-size:var(--fs-xl); color:var(--orange); display:flex; align-items:center; gap:10px; }
+  .modal-section-title { font-family:'Fredoka One',cursive; font-size:var(--fs-md); color:var(--blue); margin-bottom:4px; }
+  .modal label { font-family:'Nunito',sans-serif; font-size:var(--fs-sm); font-weight:700; color:#444; display:block; margin-bottom:4px; }
   .modal input[type="text"], .modal textarea {
-    width: 100%; border: 2px solid #ddd; border-radius: 12px;
-    padding: 10px 14px; font-family: 'Nunito', sans-serif;
-    font-size: var(--fs-sm); font-weight: 600; color: #222;
-    outline: none; transition: border-color 0.2s; resize: none;
+    width:100%; border:2px solid #ddd; border-radius:12px; padding:10px 14px;
+    font-family:'Nunito',sans-serif; font-size:var(--fs-sm); font-weight:600; color:#222;
+    outline:none; transition:border-color 0.2s; resize:none;
   }
-  .modal input[type="text"]:focus, .modal textarea:focus { border-color: var(--orange); }
-
-  .frames-group { display: flex; flex-direction: column; gap: 8px; }
-  .frame-row { display: flex; gap: 8px; align-items: center; }
-  .frame-row input { flex: 1; }
+  .modal input[type="text"]:focus, .modal textarea:focus { border-color:var(--orange); }
+  .frames-group { display:flex; flex-direction:column; gap:8px; }
+  .frame-row { display:flex; gap:8px; align-items:center; }
+  .frame-row input { flex:1; }
   .remove-frame-btn {
-    background: #fee; border: 1.5px solid #ffaaaa; border-radius: 50%;
-    width: 34px; height: 34px; font-size: 1rem; cursor: pointer; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--coral); font-weight: 900; transition: background 0.15s;
+    background:#fee; border:1.5px solid #ffaaaa; border-radius:50%;
+    width:34px; height:34px; font-size:1rem; cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--coral); font-weight:900; transition:background 0.15s;
   }
-  .remove-frame-btn:hover { background: #fdd; }
+  .remove-frame-btn:hover { background:#fdd; }
   .add-frame-btn {
-    background: #E3F2FD; border: 2px dashed var(--blue); border-radius: 10px;
-    padding: 7px 14px; font-family: 'Fredoka One', cursive; font-size: var(--fs-sm);
-    color: var(--blue); cursor: pointer; transition: background 0.15s; align-self: flex-start;
+    background:#E3F2FD; border:2px dashed var(--blue); border-radius:10px;
+    padding:7px 14px; font-family:'Fredoka One',cursive; font-size:var(--fs-sm);
+    color:var(--blue); cursor:pointer; transition:background 0.15s; align-self:flex-start;
   }
-  .add-frame-btn:hover { background: #BBDEFB; }
-  .words-hint { font-size: var(--fs-xs); color: #999; font-weight: 600; margin-bottom: 4px; }
-
-  .modal-actions {
-    display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;
-    padding-top: clamp(6px,1vh,12px); border-top: 2px solid #eee;
-  }
-  .m-btn {
-    border: none; border-radius: 50px;
-    padding: clamp(8px,1.2vh,14px) clamp(16px,2.5vw,32px);
-    font-family: 'Fredoka One', cursive; font-size: var(--fs-sm);
-    cursor: pointer; transition: transform 0.15s; min-height: 44px;
-  }
-  .m-btn:hover { transform: scale(1.05); }
-  .m-btn.save    { background: var(--teal); color: #fff; }
-  .m-btn.cancel  { background: #eee; color: #555; }
-  .m-btn.add-new { background: var(--orange); color: #fff; }
-  .m-btn.danger  { background: #ffecec; color: var(--coral); border: 1.5px solid #ffaaaa; }
-
-  .bank-list {
-    display: flex; flex-direction: column; gap: 5px;
-    max-height: 20vh; overflow-y: auto;
-    border: 2px solid #eee; border-radius: 12px; padding: 8px;
-  }
-  .bank-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 7px 10px; border-radius: 8px; cursor: pointer;
-    transition: background 0.15s; font-weight: 700;
-    font-size: var(--fs-xs); color: #333;
-  }
-  .bank-item:hover { background: #FFF9C4; }
-  .bank-item.active { background: #FFF176; border: 2px solid var(--sun); }
-  .bank-item-num { font-family: 'Fredoka One', cursive; color: var(--orange); min-width: 22px; }
-  .bank-item-text { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .bank-item-del {
-    background: none; border: none; color: #ccc; cursor: pointer;
-    font-size: 1rem; padding: 2px 6px; border-radius: 4px; transition: color 0.15s;
-  }
-  .bank-item-del:hover { color: var(--coral); }
-  .divider { border: none; border-top: 2px solid #eee; margin: 0; }
+  .add-frame-btn:hover { background:#BBDEFB; }
+  .words-hint { font-size:var(--fs-xs); color:#999; font-weight:600; margin-bottom:4px; }
+  .modal-actions { display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; padding-top:clamp(6px,1vh,12px); border-top:2px solid #eee; }
+  .m-btn { border:none; border-radius:50px; padding:clamp(8px,1.2vh,14px) clamp(16px,2.5vw,32px); font-family:'Fredoka One',cursive; font-size:var(--fs-sm); cursor:pointer; transition:transform 0.15s; min-height:44px; }
+  .m-btn:hover { transform:scale(1.05); }
+  .m-btn.save    { background:var(--teal); color:#fff; }
+  .m-btn.cancel  { background:#eee; color:#555; }
+  .m-btn.add-new { background:var(--orange); color:#fff; }
+  .m-btn.danger  { background:#ffecec; color:var(--coral); border:1.5px solid #ffaaaa; }
+  .bank-list { display:flex; flex-direction:column; gap:5px; max-height:20vh; overflow-y:auto; border:2px solid #eee; border-radius:12px; padding:8px; }
+  .bank-item { display:flex; align-items:center; gap:8px; padding:7px 10px; border-radius:8px; cursor:pointer; transition:background 0.15s; font-weight:700; font-size:var(--fs-xs); color:#333; }
+  .bank-item:hover { background:#FFF9C4; }
+  .bank-item.active { background:#FFF176; border:2px solid var(--sun); }
+  .bank-item-num { font-family:'Fredoka One',cursive; color:var(--orange); min-width:22px; }
+  .bank-item-text { flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .bank-item-del { background:none; border:none; color:#ccc; cursor:pointer; font-size:1rem; padding:2px 6px; border-radius:4px; transition:color 0.15s; }
+  .bank-item-del:hover { color:var(--coral); }
+  .divider { border:none; border-top:2px solid #eee; margin:0; }
 
   /* ── TIMER ── */
-  .timer-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.55);
-    display: none; align-items: center; justify-content: center; z-index: 100;
-  }
-  .timer-overlay.show { display: flex; }
-  .timer-face {
-    background: #fff; border-radius: 24px;
-    padding: clamp(30px,5vh,56px) clamp(40px,6vw,80px);
-    text-align: center; box-shadow: 0 16px 50px rgba(0,0,0,0.3);
-    animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
-  }
-  .timer-display {
-    font-family: 'Fredoka One', cursive; font-size: clamp(3rem,10vw,6rem);
-    color: var(--coral); letter-spacing: 4px; line-height: 1;
-    margin-bottom: 20px; cursor: pointer;
-  }
-  .timer-controls { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .t-btn {
-    border: none; border-radius: 50px;
-    padding: clamp(8px,1.2vh,14px) clamp(16px,2.5vw,32px);
-    font-family: 'Fredoka One', cursive; font-size: clamp(1rem,2vw,1.4rem);
-    cursor: pointer; transition: transform 0.15s; min-height: 44px;
-  }
-  .t-btn:hover { transform: scale(1.06); }
-  .t-btn.start { background: var(--teal); color: #fff; }
-  .t-btn.reset { background: #EEE; color: #333; }
-  .t-btn.close-btn { background: var(--coral); color: #fff; }
-  .timer-done {
-    font-family: 'Fredoka One', cursive; font-size: clamp(1.2rem,3vw,2rem);
-    color: var(--green); margin-bottom: 12px; display: none;
-  }
+  .timer-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); display:none; align-items:center; justify-content:center; z-index:100; }
+  .timer-overlay.show { display:flex; }
+  .timer-face { background:#fff; border-radius:24px; padding:clamp(30px,5vh,56px) clamp(40px,6vw,80px); text-align:center; box-shadow:0 16px 50px rgba(0,0,0,0.3); animation:popIn 0.3s cubic-bezier(.34,1.56,.64,1) both; }
+  .timer-display { font-family:'Fredoka One',cursive; font-size:clamp(3rem,10vw,6rem); color:var(--coral); letter-spacing:4px; line-height:1; margin-bottom:20px; cursor:pointer; }
+  .timer-controls { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .t-btn { border:none; border-radius:50px; padding:clamp(8px,1.2vh,14px) clamp(16px,2.5vw,32px); font-family:'Fredoka One',cursive; font-size:clamp(1rem,2vw,1.4rem); cursor:pointer; transition:transform 0.15s; min-height:44px; }
+  .t-btn:hover { transform:scale(1.06); }
+  .t-btn.start { background:var(--teal); color:#fff; }
+  .t-btn.reset { background:#EEE; color:#333; }
+  .t-btn.close-btn { background:var(--coral); color:#fff; }
+  .timer-done { font-family:'Fredoka One',cursive; font-size:clamp(1.2rem,3vw,2rem); color:var(--green); margin-bottom:12px; display:none; }
 
   /* ── TOAST ── */
-  .toast {
-    position: fixed; bottom: clamp(12px,2vh,24px); left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--teal); color: #fff; border-radius: 50px;
-    padding: 10px 28px; font-family: 'Fredoka One', cursive; font-size: var(--fs-md);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2); opacity: 0; pointer-events: none;
-    transition: opacity 0.3s, transform 0.3s; z-index: 500;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  /* hint bar under prompt */
-  .slot-hint {
-    font-family: 'Fredoka One', cursive;
-    font-size: var(--fs-xs); color: var(--orange); letter-spacing: 1px;
-    display: flex; align-items: center; gap: 8px; margin-top: 4px;
-  }
+  .toast { position:fixed; bottom:clamp(12px,2vh,24px); left:50%; transform:translateX(-50%) translateY(20px); background:var(--teal); color:#fff; border-radius:50px; padding:10px 28px; font-family:'Fredoka One',cursive; font-size:var(--fs-md); box-shadow:0 4px 16px rgba(0,0,0,0.2); opacity:0; pointer-events:none; transition:opacity 0.3s, transform 0.3s; z-index:500; }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
@@ -463,7 +482,8 @@
     </div>
   </div>
   <div class="topbar-right">
-    <button class="topbar-btn edit-btn" onclick="openEdit()">✏️ Edit</button>
+    <button class="topbar-btn show-btn"  onclick="openPicker()">🔍 Show Sentence</button>
+    <button class="topbar-btn edit-btn"  onclick="openEdit()">✏️ Edit</button>
     <button class="topbar-btn timer-btn" onclick="openTimer()">
       <div class="dot" id="timerDot"></div>
       <span id="timerBtnLabel">⏱ Timer</span>
@@ -474,43 +494,28 @@
 <!-- MAIN -->
 <div class="main">
 
-  <!-- PROMPT CARD -->
   <div class="prompt-card">
     <div class="prompt-emoji" id="promptEmoji">💭</div>
     <div class="prompt-inner">
       <div class="prompt-label">Today's Writing Prompt</div>
       <div class="inline-sentence" id="promptSentence"></div>
-      <div class="slot-hint">
-        👆 TAP A FILLED BLANK TO REMOVE &nbsp;|&nbsp; 👇 DRAG WORDS INTO THE BLANKS
-      </div>
+      <div class="slot-hint">👆 TAP A FILLED BLANK TO REMOVE &nbsp;|&nbsp; 👇 DRAG WORDS INTO THE BLANKS</div>
     </div>
     <button class="clear-btn" onclick="clearAll()">✕ Clear All</button>
   </div>
 
-  <!-- SENTENCE FRAMES -->
   <div class="card sentence-frame">
-    <div class="card-header">
-      <span class="icon">🗣️</span>
-      <h2>Sentence Starters</h2>
-    </div>
+    <div class="card-header"><span class="icon">🗣️</span><h2>Sentence Starters</h2></div>
     <div class="frame-list" id="frameList"></div>
   </div>
 
-  <!-- WORD BANK -->
   <div class="card word-bank">
-    <div class="card-header">
-      <span class="icon">📚</span>
-      <h2>Word Bank</h2>
-    </div>
+    <div class="card-header"><span class="icon">📚</span><h2>Word Bank</h2></div>
     <div class="word-bank-grid" id="wordBankGrid"></div>
   </div>
 
-  <!-- CHECKLIST -->
   <div class="card checklist">
-    <div class="card-header">
-      <span class="icon">✅</span>
-      <h2>Check Your Writing!</h2>
-    </div>
+    <div class="card-header"><span class="icon">✅</span><h2>Check Your Writing!</h2></div>
     <div class="checklist-grid">
       <div class="check-item" onclick="toggle(this)"><div class="check-box">🔠</div><div class="check-label">Capital letter at the start?</div></div>
       <div class="check-item" onclick="toggle(this)"><div class="check-box">📝</div><div class="check-label">Spaces between words?</div></div>
@@ -522,26 +527,46 @@
 
 </div>
 
+<!-- PICKER OVERLAY -->
+<div class="picker-overlay" id="pickerOverlay">
+  <div class="picker-box">
+    <div class="picker-title">🔍 Show Sentence</div>
+    <div class="picker-subtitle">Choose which sentence to display large for the class</div>
+    <div class="picker-options" id="pickerOptions"></div>
+    <button class="picker-cancel" onclick="closePicker()">✕ Cancel</button>
+  </div>
+</div>
+
+<!-- DISPLAY OVERLAY (large print) -->
+<div class="display-overlay" id="displayOverlay" onclick="closeDisplay()">
+  <div class="display-box">
+    <!-- Filled version -->
+    <div class="display-row filled-row">
+      <div class="display-row-label">✏️ WITH YOUR WORDS</div>
+      <div class="display-sentence" id="displayFilled"></div>
+    </div>
+    <hr class="display-divider">
+    <!-- Blank version -->
+    <div class="display-row blank-row">
+      <div class="display-row-label">📋 COPY THIS</div>
+      <div class="display-sentence" id="displayBlank"></div>
+    </div>
+    <div class="display-dismiss-hint">TAP ANYWHERE TO CLOSE</div>
+  </div>
+</div>
+
 <!-- EDIT MODAL -->
 <div class="modal-overlay" id="editOverlay">
   <div class="modal">
     <div class="modal-title">✏️ Prompt Editor</div>
-    <div>
-      <div class="modal-section-title">📋 Prompt Bank</div>
-      <div class="bank-list" id="bankList"></div>
-    </div>
+    <div><div class="modal-section-title">📋 Prompt Bank</div><div class="bank-list" id="bankList"></div></div>
     <hr class="divider">
     <div><div class="modal-section-title" id="editingLabel">Editing Prompt #1</div></div>
     <div>
       <label>Writing Prompt <span style="font-weight:400;color:#aaa;font-size:var(--fs-xs);">use ___ for each blank</span></label>
       <input type="text" id="editPromptText" placeholder="e.g. My favorite color is ___ because it is ___." />
     </div>
-    <div style="display:flex;gap:12px;">
-      <div style="flex:0 0 auto;">
-        <label>Emoji</label>
-        <input type="text" id="editEmoji" placeholder="💭" style="max-width:80px;" />
-      </div>
-    </div>
+    <div><label>Emoji</label><input type="text" id="editEmoji" placeholder="💭" style="max-width:80px;" /></div>
     <div>
       <label>Sentence Starters <span style="font-weight:400;color:#aaa;font-size:var(--fs-xs);">max 3 — use ___ for blanks</span></label>
       <div class="frames-group" id="editFrames"></div>
@@ -581,492 +606,303 @@
 //  DEFAULT PROMPT BANK
 // ═══════════════════════════════════════
 const DEFAULT_PROMPTS = [
-  {
-    emoji: "🌈",
-    prompt: "My favorite color is ___ because it is ___.",
-    frames: [
-      "My favorite color is ___.",
-      "I like ___ because it is ___.",
-      "___ is the best color."
-    ],
-    words: ["red","blue","green","yellow","purple","orange","bright","pretty","calm","bold","happy","shiny"]
-  },
-  {
-    emoji: "💭",
-    prompt: "I think ___ is the best because it is ___.",
-    frames: [
-      "I think ___ is the best.",
-      "I like ___ because it is ___.",
-      "My favorite is ___."
-    ],
-    words: ["pizza","recess","reading","math","art","lunch","yummy","fun","exciting","cool","easy","colorful"]
-  },
-  {
-    emoji: "🐾",
-    prompt: "My favorite animal is ___ because it is ___.",
-    frames: [
-      "My favorite animal is ___.",
-      "I like ___ because it is ___.",
-      "___ is the best animal."
-    ],
-    words: ["dog","cat","dolphin","elephant","penguin","tiger","fast","cute","funny","big","smart","fluffy"]
-  },
-  {
-    emoji: "🍕",
-    prompt: "My favorite food is ___ because it is ___.",
-    frames: [
-      "My favorite food is ___.",
-      "I like ___ because it is ___.",
-      "___ is the best food."
-    ],
-    words: ["pizza","tacos","pasta","apples","chicken","soup","yummy","sweet","crunchy","warm","fresh","tasty"]
-  },
-  {
-    emoji: "☀️",
-    prompt: "My favorite season is ___ because it is ___.",
-    frames: [
-      "My favorite season is ___.",
-      "I like ___ because it is ___.",
-      "___ is the best time of year."
-    ],
-    words: ["summer","winter","spring","fall","sunny","snowy","warm","cool","rainy","colorful","windy","fun"]
-  },
-  {
-    emoji: "🏫",
-    prompt: "My favorite thing at school is ___ because it is ___.",
-    frames: [
-      "My favorite thing at school is ___.",
-      "I like ___ because it is ___.",
-      "___ is my favorite part of the day."
-    ],
-    words: ["recess","art","math","reading","music","lunch","fun","exciting","creative","easy","active","relaxing"]
-  },
-  {
-    emoji: "🎉",
-    prompt: "This weekend I ___ and it was ___.",
-    frames: [
-      "This weekend I ___.",
-      "On the weekend I ___ and it was ___.",
-      "I had fun when I ___."
-    ],
-    words: ["played","rested","cooked","walked","watched a movie","visited family","great","fun","exciting","relaxing","silly","awesome"]
-  },
-  {
-    emoji: "🌅",
-    prompt: "After school I like to ___ because it is ___.",
-    frames: [
-      "After school I like to ___.",
-      "I enjoy ___ after school.",
-      "My favorite after-school activity is ___."
-    ],
-    words: ["play outside","draw","read","watch TV","play games","help cook","fun","relaxing","creative","exciting","easy","cozy"]
-  },
-  {
-    emoji: "❄️",
-    prompt: "My favorite thing about winter is ___ because it is ___.",
-    frames: [
-      "My favorite thing about winter is ___.",
-      "I love ___ in the winter.",
-      "Winter is great because it is ___."
-    ],
-    words: ["snow","hot cocoa","holidays","sledding","cozy clothes","no school","fun","yummy","beautiful","exciting","warm","sparkly"]
-  },
-  {
-    emoji: "🌸",
-    prompt: "In spring I love to ___ because it is ___.",
-    frames: [
-      "In spring I love to ___.",
-      "Spring is fun because it is ___.",
-      "My favorite spring activity is ___."
-    ],
-    words: ["play outside","see flowers","go on walks","ride my bike","watch birds","plant seeds","beautiful","fresh","warm","exciting","colorful","fun"]
-  }
+  { emoji:"🌈", prompt:"My favorite color is ___ because it is ___.", frames:["My favorite color is ___.", "I like ___ because it is ___.", "___ is the best color."], words:["red","blue","green","yellow","purple","orange","bright","pretty","calm","bold","happy","shiny"] },
+  { emoji:"💭", prompt:"I think ___ is the best because it is ___.", frames:["I think ___ is the best.", "I like ___ because it is ___.", "My favorite is ___."], words:["pizza","recess","reading","math","art","lunch","yummy","fun","exciting","cool","easy","colorful"] },
+  { emoji:"🐾", prompt:"My favorite animal is ___ because it is ___.", frames:["My favorite animal is ___.", "I like ___ because it is ___.", "___ is the best animal."], words:["dog","cat","dolphin","elephant","penguin","tiger","fast","cute","funny","big","smart","fluffy"] },
+  { emoji:"🍕", prompt:"My favorite food is ___ because it is ___.", frames:["My favorite food is ___.", "I like ___ because it is ___.", "___ is the best food."], words:["pizza","tacos","pasta","apples","chicken","soup","yummy","sweet","crunchy","warm","fresh","tasty"] },
+  { emoji:"☀️", prompt:"My favorite season is ___ because it is ___.", frames:["My favorite season is ___.", "I like ___ because it is ___.", "___ is the best time of year."], words:["summer","winter","spring","fall","sunny","snowy","warm","cool","rainy","colorful","windy","fun"] },
+  { emoji:"🏫", prompt:"My favorite thing at school is ___ because it is ___.", frames:["My favorite thing at school is ___.", "I like ___ because it is ___.", "___ is my favorite part of the day."], words:["recess","art","math","reading","music","lunch","fun","exciting","creative","easy","active","relaxing"] },
+  { emoji:"🎉", prompt:"This weekend I ___ and it was ___.", frames:["This weekend I ___.", "On the weekend I ___ and it was ___.", "I had fun when I ___."], words:["played","rested","cooked","walked","watched a movie","visited family","great","fun","exciting","relaxing","silly","awesome"] },
+  { emoji:"🌅", prompt:"After school I like to ___ because it is ___.", frames:["After school I like to ___.", "I enjoy ___ after school.", "My favorite after-school activity is ___."], words:["play outside","draw","read","watch TV","play games","help cook","fun","relaxing","creative","exciting","easy","cozy"] },
+  { emoji:"❄️", prompt:"My favorite thing about winter is ___ because it is ___.", frames:["My favorite thing about winter is ___.", "I love ___ in the winter.", "Winter is great because it is ___."], words:["snow","hot cocoa","holidays","sledding","cozy clothes","no school","fun","yummy","beautiful","exciting","warm","sparkly"] },
+  { emoji:"🌸", prompt:"In spring I love to ___ because it is ___.", frames:["In spring I love to ___.", "Spring is fun because it is ___.", "My favorite spring activity is ___."], words:["play outside","see flowers","go on walks","ride my bike","watch birds","plant seeds","beautiful","fresh","warm","exciting","colorful","fun"] }
 ];
 
 const STORAGE_KEY = 'qotd_prompts_v3';
 const ACTIVE_KEY  = 'qotd_active_v3';
 
-function loadPrompts() {
-  try { const s = localStorage.getItem(STORAGE_KEY); return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_PROMPTS)); }
-  catch(e) { return JSON.parse(JSON.stringify(DEFAULT_PROMPTS)); }
-}
-function savePrompts(p)   { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch(e){} }
-function loadActiveIndex(){ try { const s = localStorage.getItem(ACTIVE_KEY); return s ? parseInt(s) : 0; } catch(e){ return 0; } }
-function saveActiveIndex(i){ try { localStorage.setItem(ACTIVE_KEY, String(i)); } catch(e){} }
+function loadPrompts(){ try{ const s=localStorage.getItem(STORAGE_KEY); return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_PROMPTS)); }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_PROMPTS)); } }
+function savePrompts(p){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(p)); }catch(e){} }
+function loadActiveIndex(){ try{ const s=localStorage.getItem(ACTIVE_KEY); return s?parseInt(s):0; }catch(e){ return 0; } }
+function saveActiveIndex(i){ try{ localStorage.setItem(ACTIVE_KEY,String(i)); }catch(e){} }
 
 let prompts = loadPrompts();
-let activeIndex = Math.min(loadActiveIndex(), prompts.length - 1);
+let activeIndex = Math.min(loadActiveIndex(), prompts.length-1);
 let editingIndex = 0;
-
-// ═══════════════════════════════════════
-//  DRAG STATE
-// ═══════════════════════════════════════
 let dragWord = null, ghost = null;
 
 // ═══════════════════════════════════════
-//  BUILD INLINE SENTENCE
-//  Parses "Text ___ more text ___." into
-//  a mix of text spans and .blank-slot divs
+//  INLINE SENTENCE BUILDER
 // ═══════════════════════════════════════
-function buildInlineSentence(container, text, isFrame) {
+function buildInlineSentence(container, text, isFrame){
   container.innerHTML = '';
   const parts = text.split('___');
   parts.forEach((part, i) => {
-    if (part) {
-      const span = document.createElement('span');
-      span.textContent = part;
-      container.appendChild(span);
-    }
-    // Add a blank slot after every part except the last
-    if (i < parts.length - 1) {
-      container.appendChild(makeBlankSlot(isFrame));
-    }
+    if(part){ const s=document.createElement('span'); s.textContent=part; container.appendChild(s); }
+    if(i < parts.length-1) container.appendChild(makeBlankSlot(isFrame));
   });
 }
 
-function makeBlankSlot(isFrame) {
+function makeBlankSlot(isFrame){
   const slot = document.createElement('div');
   slot.className = 'blank-slot';
   slot.dataset.filled = '';
-
-  const label = document.createElement('span');
-  label.className = 'slot-label';
-  label.textContent = isFrame ? 'drop here' : 'drop word';
-  slot.appendChild(label);
-
-  const word = document.createElement('span');
-  word.className = 'slot-word';
-  slot.appendChild(word);
-
-  const x = document.createElement('span');
-  x.className = 'slot-remove';
-  x.textContent = ' ✕';
-  slot.appendChild(x);
-
-  // Click to clear
-  slot.addEventListener('click', () => {
-    if (slot.dataset.filled) {
-      slot.dataset.filled = '';
-      slot.classList.remove('filled');
-      word.textContent = '';
-    }
-  });
-
-  // Mouse drop target
-  slot.addEventListener('mouseenter', () => { if (dragWord) slot.classList.add('drag-over-slot'); });
-  slot.addEventListener('mouseleave', () => slot.classList.remove('drag-over-slot'));
-
+  const label = document.createElement('span'); label.className='slot-label'; label.textContent=isFrame?'drop here':'drop word'; slot.appendChild(label);
+  const word  = document.createElement('span'); word.className='slot-word'; slot.appendChild(word);
+  const x     = document.createElement('span'); x.className='slot-remove'; x.textContent=' ✕'; slot.appendChild(x);
+  slot.addEventListener('click', ()=>{ if(slot.dataset.filled){ slot.dataset.filled=''; slot.classList.remove('filled'); word.textContent=''; } });
+  slot.addEventListener('mouseenter', ()=>{ if(dragWord) slot.classList.add('drag-over-slot'); });
+  slot.addEventListener('mouseleave', ()=> slot.classList.remove('drag-over-slot'));
   return slot;
 }
 
-function fillSlot(slot, word) {
+function fillSlot(slot, word){
   slot.classList.remove('drag-over-slot');
   slot.dataset.filled = word;
   slot.classList.add('filled');
-  const wordSpan = slot.querySelector('.slot-word');
-  wordSpan.textContent = word;
-  // Animate
-  wordSpan.classList.remove('slot-fill-anim');
-  void wordSpan.offsetWidth; // reflow
-  wordSpan.classList.add('slot-fill-anim');
+  const ws = slot.querySelector('.slot-word');
+  ws.textContent = word;
+  ws.classList.remove('slot-fill-anim');
+  void ws.offsetWidth;
+  ws.classList.add('slot-fill-anim');
 }
 
 // ═══════════════════════════════════════
-//  RENDER PROMPT
+//  RENDER
 // ═══════════════════════════════════════
-function renderPrompt() {
+function renderPrompt(){
   const p = prompts[activeIndex];
-  document.getElementById('promptEmoji').textContent = p.emoji || '💭';
+  document.getElementById('promptEmoji').textContent = p.emoji||'💭';
+  buildInlineSentence(document.getElementById('promptSentence'), p.prompt, false);
 
-  // Build prompt sentence
-  const ps = document.getElementById('promptSentence');
-  buildInlineSentence(ps, p.prompt, false);
-
-  // Build frame sentences
   const fl = document.getElementById('frameList');
   fl.innerHTML = '';
-  (p.frames || []).forEach(f => {
-    const item = document.createElement('div');
-    item.className = 'frame-item';
-    const sentence = document.createElement('div');
-    sentence.className = 'inline-sentence frame-sentence';
-    buildInlineSentence(sentence, f, true);
-    item.appendChild(sentence);
-    fl.appendChild(item);
+  (p.frames||[]).forEach(f=>{
+    const item = document.createElement('div'); item.className='frame-item';
+    const sent = document.createElement('div'); sent.className='inline-sentence frame-sentence';
+    buildInlineSentence(sent, f, true);
+    item.appendChild(sent); fl.appendChild(item);
   });
 
-  renderWordBank(p.words || []);
-
-  document.getElementById('promptCounter').textContent = `${activeIndex+1} / ${prompts.length}`;
-  document.getElementById('prevBtn').disabled = activeIndex === 0;
-  document.getElementById('nextBtn').disabled = activeIndex === prompts.length - 1;
-
-  // Reset checklist
-  document.querySelectorAll('.check-item').forEach((el, i) => {
-    el.classList.remove('checked');
-    el.querySelector('.check-box').textContent = checkIcons[i];
-  });
-
+  renderWordBank(p.words||[]);
+  document.getElementById('promptCounter').textContent=`${activeIndex+1} / ${prompts.length}`;
+  document.getElementById('prevBtn').disabled = activeIndex===0;
+  document.getElementById('nextBtn').disabled = activeIndex===prompts.length-1;
+  document.querySelectorAll('.check-item').forEach((el,i)=>{ el.classList.remove('checked'); el.querySelector('.check-box').textContent=checkIcons[i]; });
   saveActiveIndex(activeIndex);
 }
 
-function navigatePrompt(dir) {
-  const next = activeIndex + dir;
-  if (next < 0 || next >= prompts.length) return;
-  activeIndex = next;
-  renderPrompt();
+function navigatePrompt(dir){
+  const next=activeIndex+dir;
+  if(next<0||next>=prompts.length) return;
+  activeIndex=next; renderPrompt();
 }
 
 // ═══════════════════════════════════════
 //  WORD BANK
 // ═══════════════════════════════════════
-function renderWordBank(words) {
-  const grid = document.getElementById('wordBankGrid');
-  grid.innerHTML = '';
-  words.forEach(w => {
-    const chip = document.createElement('div');
-    chip.className = 'word-chip';
-    chip.dataset.word = w;
-    chip.textContent = w;
-    attachChipEvents(chip);
-    grid.appendChild(chip);
-  });
+function renderWordBank(words){
+  const grid=document.getElementById('wordBankGrid'); grid.innerHTML='';
+  words.forEach(w=>{ const chip=document.createElement('div'); chip.className='word-chip'; chip.dataset.word=w; chip.textContent=w; attachChipEvents(chip); grid.appendChild(chip); });
 }
 
-function attachChipEvents(chip) {
-  chip.addEventListener('mousedown', e => {
-    dragWord = chip.dataset.word;
-    chip.classList.add('dragging');
-    createGhost(dragWord, e.clientX, e.clientY);
-    e.preventDefault();
-  });
-  chip.addEventListener('touchstart', e => {
-    dragWord = chip.dataset.word;
-    chip.classList.add('dragging');
-    const t = e.touches[0];
-    createGhost(dragWord, t.clientX, t.clientY);
-    e.preventDefault();
-  }, { passive: false });
+function attachChipEvents(chip){
+  chip.addEventListener('mousedown', e=>{ dragWord=chip.dataset.word; chip.classList.add('dragging'); createGhost(dragWord,e.clientX,e.clientY); e.preventDefault(); });
+  chip.addEventListener('touchstart', e=>{ dragWord=chip.dataset.word; chip.classList.add('dragging'); const t=e.touches[0]; createGhost(dragWord,t.clientX,t.clientY); e.preventDefault(); },{passive:false});
 }
 
-function createGhost(word, x, y) {
-  ghost = document.createElement('div');
-  ghost.className = 'drag-ghost';
-  ghost.textContent = word;
-  ghost.style.left = x+'px'; ghost.style.top = y+'px';
-  document.body.appendChild(ghost);
-}
-function moveGhost(x, y) { if (ghost) { ghost.style.left = x+'px'; ghost.style.top = y+'px'; } }
-function removeGhost()    { if (ghost) { ghost.remove(); ghost = null; } }
+function createGhost(word,x,y){ ghost=document.createElement('div'); ghost.className='drag-ghost'; ghost.textContent=word; ghost.style.left=x+'px'; ghost.style.top=y+'px'; document.body.appendChild(ghost); }
+function moveGhost(x,y){ if(ghost){ghost.style.left=x+'px';ghost.style.top=y+'px';} }
+function removeGhost(){ if(ghost){ghost.remove();ghost=null;} }
 
-function getSlotUnderPoint(x, y) {
-  // Temporarily hide ghost so elementFromPoint works
-  if (ghost) ghost.style.display = 'none';
-  const el = document.elementFromPoint(x, y);
-  if (ghost) ghost.style.display = '';
-  if (!el) return null;
-  return el.closest('.blank-slot');
-}
+function getSlotUnder(x,y){ if(ghost)ghost.style.display='none'; const el=document.elementFromPoint(x,y); if(ghost)ghost.style.display=''; return el?el.closest('.blank-slot'):null; }
 
-document.addEventListener('mousemove', e => {
-  if (!dragWord) return;
-  moveGhost(e.clientX, e.clientY);
-  // highlight slots
-  document.querySelectorAll('.blank-slot').forEach(s => s.classList.remove('drag-over-slot'));
-  const slot = getSlotUnderPoint(e.clientX, e.clientY);
-  if (slot) slot.classList.add('drag-over-slot');
-});
+document.addEventListener('mousemove',e=>{ if(!dragWord)return; moveGhost(e.clientX,e.clientY); document.querySelectorAll('.blank-slot').forEach(s=>s.classList.remove('drag-over-slot')); const sl=getSlotUnder(e.clientX,e.clientY); if(sl)sl.classList.add('drag-over-slot'); });
+document.addEventListener('mouseup',e=>{ if(!dragWord)return; const sl=getSlotUnder(e.clientX,e.clientY); if(sl)fillSlot(sl,dragWord); document.querySelectorAll('.word-chip.dragging').forEach(c=>c.classList.remove('dragging')); document.querySelectorAll('.blank-slot').forEach(s=>s.classList.remove('drag-over-slot')); removeGhost(); dragWord=null; });
+document.addEventListener('touchmove',e=>{ if(!dragWord)return; const t=e.touches[0]; moveGhost(t.clientX,t.clientY); document.querySelectorAll('.blank-slot').forEach(s=>s.classList.remove('drag-over-slot')); const sl=getSlotUnder(t.clientX,t.clientY); if(sl)sl.classList.add('drag-over-slot'); e.preventDefault(); },{passive:false});
+document.addEventListener('touchend',e=>{ if(!dragWord)return; const t=e.changedTouches[0]; const sl=getSlotUnder(t.clientX,t.clientY); if(sl)fillSlot(sl,dragWord); document.querySelectorAll('.word-chip.dragging').forEach(c=>c.classList.remove('dragging')); document.querySelectorAll('.blank-slot').forEach(s=>s.classList.remove('drag-over-slot')); removeGhost(); dragWord=null; });
 
-document.addEventListener('mouseup', e => {
-  if (!dragWord) return;
-  const slot = getSlotUnderPoint(e.clientX, e.clientY);
-  if (slot) fillSlot(slot, dragWord);
-  document.querySelectorAll('.word-chip.dragging').forEach(c => c.classList.remove('dragging'));
-  document.querySelectorAll('.blank-slot').forEach(s => s.classList.remove('drag-over-slot'));
-  removeGhost(); dragWord = null;
-});
-
-document.addEventListener('touchmove', e => {
-  if (!dragWord) return;
-  const t = e.touches[0];
-  moveGhost(t.clientX, t.clientY);
-  document.querySelectorAll('.blank-slot').forEach(s => s.classList.remove('drag-over-slot'));
-  const slot = getSlotUnderPoint(t.clientX, t.clientY);
-  if (slot) slot.classList.add('drag-over-slot');
-  e.preventDefault();
-}, { passive: false });
-
-document.addEventListener('touchend', e => {
-  if (!dragWord) return;
-  const t = e.changedTouches[0];
-  const slot = getSlotUnderPoint(t.clientX, t.clientY);
-  if (slot) fillSlot(slot, dragWord);
-  document.querySelectorAll('.word-chip.dragging').forEach(c => c.classList.remove('dragging'));
-  document.querySelectorAll('.blank-slot').forEach(s => s.classList.remove('drag-over-slot'));
-  removeGhost(); dragWord = null;
-});
-
-function clearAll() {
-  document.querySelectorAll('.blank-slot').forEach(slot => {
-    slot.dataset.filled = '';
-    slot.classList.remove('filled');
-    slot.querySelector('.slot-word').textContent = '';
-  });
-}
+function clearAll(){ document.querySelectorAll('.blank-slot').forEach(sl=>{ sl.dataset.filled=''; sl.classList.remove('filled'); sl.querySelector('.slot-word').textContent=''; }); }
 
 // ═══════════════════════════════════════
 //  CHECKLIST
 // ═══════════════════════════════════════
-const checkIcons = ['🔠','📝','⚙️','🔢','🤔'];
-function toggle(el) {
-  el.classList.toggle('checked');
-  const box = el.querySelector('.check-box');
-  if (el.classList.contains('checked')) {
-    box.textContent = '✓';
-  } else {
-    const items = [...document.querySelectorAll('.check-item')];
-    const i = items.indexOf(el);
-    box.textContent = checkIcons[i];
-  }
+const checkIcons=['🔠','📝','⚙️','🔢','🤔'];
+function toggle(el){ el.classList.toggle('checked'); const box=el.querySelector('.check-box'); if(el.classList.contains('checked')){ box.textContent='✓'; }else{ const items=[...document.querySelectorAll('.check-item')]; box.textContent=checkIcons[items.indexOf(el)]; } }
+
+// ═══════════════════════════════════════
+//  SHOW SENTENCE — PICKER
+// ═══════════════════════════════════════
+function openPicker(){
+  const p = prompts[activeIndex];
+  const opts = document.getElementById('pickerOptions');
+  opts.innerHTML = '';
+
+  // Build list: prompt first, then each frame
+  const sentences = [
+    { text: p.prompt, label: 'Writing Prompt', isPrompt: true },
+    ...(p.frames||[]).map((f,i)=>({ text:f, label:`Starter ${i+1}`, isPrompt:false }))
+  ];
+
+  sentences.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'picker-option' + (item.isPrompt ? ' is-prompt' : '');
+    div.innerHTML = `<span class="picker-option-badge">${item.label}</span><span class="picker-option-text">${item.text}</span>`;
+    div.addEventListener('click', ()=>{ closePicker(); showDisplay(item.text, item.isPrompt); });
+    opts.appendChild(div);
+  });
+
+  document.getElementById('pickerOverlay').classList.add('show');
 }
+function closePicker(){ document.getElementById('pickerOverlay').classList.remove('show'); }
+
+// ═══════════════════════════════════════
+//  SHOW SENTENCE — DISPLAY
+//  Reads current slot fills for the
+//  "with your words" version
+// ═══════════════════════════════════════
+function showDisplay(sentenceText, isPrompt){
+  // Gather filled slot values for this sentence
+  // We match by finding the sentence's container
+  // then reading slot fills in order
+  const allContainers = [
+    document.getElementById('promptSentence'),
+    ...document.querySelectorAll('#frameList .inline-sentence')
+  ];
+
+  // Find which container matches this sentence text
+  const p = prompts[activeIndex];
+  const allTexts = [p.prompt, ...(p.frames||[])];
+  const idx = allTexts.indexOf(sentenceText);
+  const container = allContainers[idx] || null;
+
+  // Read slot fills in order from that container
+  const fills = container
+    ? [...container.querySelectorAll('.blank-slot')].map(s => s.dataset.filled || '')
+    : [];
+
+  // Build filled display sentence
+  buildDisplaySentence(document.getElementById('displayFilled'), sentenceText, fills, true);
+  // Build blank display sentence
+  buildDisplaySentence(document.getElementById('displayBlank'), sentenceText, fills, false);
+
+  document.getElementById('displayOverlay').classList.add('show');
+}
+
+function buildDisplaySentence(container, text, fills, showFilled){
+  container.innerHTML = '';
+  const parts = text.split('___');
+  parts.forEach((part, i)=>{
+    if(part){
+      const span = document.createElement('span');
+      span.textContent = part;
+      container.appendChild(span);
+    }
+    if(i < parts.length-1){
+      const fill = fills[i] || '';
+      if(showFilled && fill){
+        // Yellow chip with the word
+        const chip = document.createElement('span');
+        chip.className = 'display-word-chip';
+        chip.textContent = fill;
+        container.appendChild(chip);
+      } else {
+        // Blank underline
+        const blank = document.createElement('span');
+        blank.className = 'display-blank';
+        container.appendChild(blank);
+      }
+    }
+  });
+}
+
+function closeDisplay(){ document.getElementById('displayOverlay').classList.remove('show'); }
 
 // ═══════════════════════════════════════
 //  EDIT MODAL
 // ═══════════════════════════════════════
-function openEdit() {
-  editingIndex = activeIndex;
-  renderBankList(); loadEditFields(editingIndex);
-  document.getElementById('editOverlay').classList.add('show');
-}
-function closeEdit() { document.getElementById('editOverlay').classList.remove('show'); }
+function openEdit(){ editingIndex=activeIndex; renderBankList(); loadEditFields(editingIndex); document.getElementById('editOverlay').classList.add('show'); }
+function closeEdit(){ document.getElementById('editOverlay').classList.remove('show'); }
 
-function renderBankList() {
-  const list = document.getElementById('bankList');
-  list.innerHTML = '';
-  prompts.forEach((p, i) => {
-    const div = document.createElement('div');
-    div.className = 'bank-item' + (i === editingIndex ? ' active' : '');
-    div.innerHTML = `<span class="bank-item-num">${i+1}</span>
-      <span class="bank-item-text">${p.emoji||'💭'} ${p.prompt}</span>
-      <button class="bank-item-del" title="Delete" onclick="deleteBankItem(event,${i})">✕</button>`;
-    div.addEventListener('click', () => { editingIndex = i; renderBankList(); loadEditFields(i); });
+function renderBankList(){
+  const list=document.getElementById('bankList'); list.innerHTML='';
+  prompts.forEach((p,i)=>{
+    const div=document.createElement('div'); div.className='bank-item'+(i===editingIndex?' active':'');
+    div.innerHTML=`<span class="bank-item-num">${i+1}</span><span class="bank-item-text">${p.emoji||'💭'} ${p.prompt}</span><button class="bank-item-del" onclick="deleteBankItem(event,${i})">✕</button>`;
+    div.addEventListener('click',()=>{ editingIndex=i; renderBankList(); loadEditFields(i); });
     list.appendChild(div);
   });
-  const active = list.querySelector('.active');
-  if (active) active.scrollIntoView({ block: 'nearest' });
+  const active=list.querySelector('.active'); if(active) active.scrollIntoView({block:'nearest'});
 }
 
-function loadEditFields(i) {
-  const p = prompts[i];
-  document.getElementById('editingLabel').textContent = `Editing Prompt #${i+1}`;
-  document.getElementById('editPromptText').value = p.prompt || '';
-  document.getElementById('editEmoji').value = p.emoji || '💭';
-  document.getElementById('editWords').value = (p.words||[]).join(', ');
-  const fg = document.getElementById('editFrames');
-  fg.innerHTML = '';
-  (p.frames||[]).forEach(f => addFrameRow(f));
+function loadEditFields(i){
+  const p=prompts[i];
+  document.getElementById('editingLabel').textContent=`Editing Prompt #${i+1}`;
+  document.getElementById('editPromptText').value=p.prompt||'';
+  document.getElementById('editEmoji').value=p.emoji||'💭';
+  document.getElementById('editWords').value=(p.words||[]).join(', ');
+  const fg=document.getElementById('editFrames'); fg.innerHTML='';
+  (p.frames||[]).forEach(f=>addFrameRow(f));
 }
 
-function addFrameRow(val) {
-  const fg = document.getElementById('editFrames');
-  if (fg.children.length >= 3) { showToast('Max 3 starters!'); return; }
-  const v = typeof val === 'string' ? val : '';
-  const row = document.createElement('div'); row.className = 'frame-row';
-  const input = document.createElement('input'); input.type = 'text';
-  input.placeholder = 'e.g. I like ___ because it is ___.';
-  input.value = v;
-  const btn = document.createElement('button'); btn.className = 'remove-frame-btn';
-  btn.textContent = '✕'; btn.onclick = () => row.remove();
+function addFrameRow(val){
+  const fg=document.getElementById('editFrames');
+  if(fg.children.length>=3){ showToast('Max 3 starters!'); return; }
+  const v=typeof val==='string'?val:'';
+  const row=document.createElement('div'); row.className='frame-row';
+  const input=document.createElement('input'); input.type='text'; input.placeholder='e.g. I like ___ because it is ___.'; input.value=v;
+  const btn=document.createElement('button'); btn.className='remove-frame-btn'; btn.textContent='✕'; btn.onclick=()=>row.remove();
   row.appendChild(input); row.appendChild(btn); fg.appendChild(row);
 }
 
-function saveEdit() {
-  const p = prompts[editingIndex];
-  p.prompt = document.getElementById('editPromptText').value.trim() || p.prompt;
-  p.emoji  = document.getElementById('editEmoji').value.trim() || '💭';
-  p.frames = [...document.querySelectorAll('#editFrames input')].map(i => i.value.trim()).filter(Boolean);
-  p.words  = document.getElementById('editWords').value.split(',').map(w => w.trim()).filter(Boolean);
+function saveEdit(){
+  const p=prompts[editingIndex];
+  p.prompt=document.getElementById('editPromptText').value.trim()||p.prompt;
+  p.emoji=document.getElementById('editEmoji').value.trim()||'💭';
+  p.frames=[...document.querySelectorAll('#editFrames input')].map(i=>i.value.trim()).filter(Boolean);
+  p.words=document.getElementById('editWords').value.split(',').map(w=>w.trim()).filter(Boolean);
   savePrompts(prompts);
-  if (editingIndex === activeIndex) renderPrompt();
+  if(editingIndex===activeIndex) renderPrompt();
   closeEdit(); showToast('✅ Saved!');
 }
 
-function addNewPrompt() {
-  prompts.push({ emoji:'💭', prompt:'My new prompt ___.', frames:['I ___.'], words:['word1','word2','word3'] });
-  editingIndex = prompts.length - 1;
-  savePrompts(prompts); renderBankList(); loadEditFields(editingIndex);
+function addNewPrompt(){
+  prompts.push({emoji:'💭',prompt:'My new prompt ___.',frames:['I ___.'],words:['word1','word2','word3']});
+  editingIndex=prompts.length-1; savePrompts(prompts); renderBankList(); loadEditFields(editingIndex);
 }
 
-function deleteCurrentPrompt() {
-  if (prompts.length <= 1) { showToast('⚠️ Need at least 1 prompt!'); return; }
-  if (!confirm('Delete this prompt?')) return;
-  prompts.splice(editingIndex, 1);
-  editingIndex = Math.min(editingIndex, prompts.length - 1);
-  activeIndex  = Math.min(activeIndex,  prompts.length - 1);
+function deleteCurrentPrompt(){
+  if(prompts.length<=1){ showToast('⚠️ Need at least 1 prompt!'); return; }
+  if(!confirm('Delete this prompt?')) return;
+  prompts.splice(editingIndex,1); editingIndex=Math.min(editingIndex,prompts.length-1); activeIndex=Math.min(activeIndex,prompts.length-1);
   savePrompts(prompts); renderBankList(); loadEditFields(editingIndex); renderPrompt();
 }
 
-function deleteBankItem(e, i) {
+function deleteBankItem(e,i){
   e.stopPropagation();
-  if (prompts.length <= 1) { showToast('⚠️ Need at least 1 prompt!'); return; }
-  prompts.splice(i, 1);
-  editingIndex = Math.min(editingIndex, prompts.length - 1);
-  activeIndex  = Math.min(activeIndex,  prompts.length - 1);
+  if(prompts.length<=1){ showToast('⚠️ Need at least 1 prompt!'); return; }
+  prompts.splice(i,1); editingIndex=Math.min(editingIndex,prompts.length-1); activeIndex=Math.min(activeIndex,prompts.length-1);
   savePrompts(prompts); renderBankList(); loadEditFields(editingIndex); renderPrompt();
 }
 
 // ═══════════════════════════════════════
 //  TIMER
 // ═══════════════════════════════════════
-let totalSeconds = 5*60, remaining = totalSeconds, timerInterval = null, running = false;
-function openTimer()  { document.getElementById('timerOverlay').classList.add('show'); }
-function closeTimer() { document.getElementById('timerOverlay').classList.remove('show'); }
+let totalSeconds=5*60,remaining=totalSeconds,timerInterval=null,running=false;
+function openTimer(){ document.getElementById('timerOverlay').classList.add('show'); }
+function closeTimer(){ document.getElementById('timerOverlay').classList.remove('show'); }
 function formatTime(s){ const m=Math.floor(s/60),sec=s%60; return `${m}:${sec.toString().padStart(2,'0')}`; }
-function updateDisplay(){
-  document.getElementById('timerDisplay').textContent = formatTime(remaining);
-  document.getElementById('timerBtnLabel').textContent = '⏱ '+formatTime(remaining);
-}
+function updateDisplay(){ document.getElementById('timerDisplay').textContent=formatTime(remaining); document.getElementById('timerBtnLabel').textContent='⏱ '+formatTime(remaining); }
 function startPause(){
-  if (running){
-    clearInterval(timerInterval); running=false;
-    document.getElementById('startPauseBtn').textContent='▶ Resume';
-    document.getElementById('timerDot').classList.remove('running');
-  } else {
-    if (remaining===0) return;
-    running=true;
-    document.getElementById('startPauseBtn').textContent='⏸ Pause';
-    document.getElementById('timerDot').classList.add('running');
-    timerInterval=setInterval(()=>{
-      remaining--; updateDisplay();
-      if (remaining<=0){
-        clearInterval(timerInterval); running=false;
-        document.getElementById('timerDone').style.display='block';
-        document.getElementById('startPauseBtn').textContent='▶ Start';
-        document.getElementById('timerDot').classList.remove('running');
-        document.getElementById('timerDisplay').style.color='#2E7D32';
-      }
-    },1000);
-  }
+  if(running){ clearInterval(timerInterval); running=false; document.getElementById('startPauseBtn').textContent='▶ Resume'; document.getElementById('timerDot').classList.remove('running'); }
+  else{ if(remaining===0)return; running=true; document.getElementById('startPauseBtn').textContent='⏸ Pause'; document.getElementById('timerDot').classList.add('running');
+    timerInterval=setInterval(()=>{ remaining--; updateDisplay(); if(remaining<=0){ clearInterval(timerInterval); running=false; document.getElementById('timerDone').style.display='block'; document.getElementById('startPauseBtn').textContent='▶ Start'; document.getElementById('timerDot').classList.remove('running'); document.getElementById('timerDisplay').style.color='#2E7D32'; } },1000); }
 }
-function resetTimer(){
-  clearInterval(timerInterval); running=false; remaining=totalSeconds; updateDisplay();
-  document.getElementById('startPauseBtn').textContent='▶ Start';
-  document.getElementById('timerDone').style.display='none';
-  document.getElementById('timerDisplay').style.color='';
-  document.getElementById('timerDot').classList.remove('running');
-}
-document.getElementById('timerDisplay').addEventListener('click',()=>{
-  const mins=prompt('Set timer (minutes):','5');
-  if (mins&&!isNaN(mins)){ totalSeconds=parseInt(mins)*60; remaining=totalSeconds; updateDisplay(); }
-});
+function resetTimer(){ clearInterval(timerInterval); running=false; remaining=totalSeconds; updateDisplay(); document.getElementById('startPauseBtn').textContent='▶ Start'; document.getElementById('timerDone').style.display='none'; document.getElementById('timerDisplay').style.color=''; document.getElementById('timerDot').classList.remove('running'); }
+document.getElementById('timerDisplay').addEventListener('click',()=>{ const mins=prompt('Set timer (minutes):','5'); if(mins&&!isNaN(mins)){ totalSeconds=parseInt(mins)*60; remaining=totalSeconds; updateDisplay(); } });
 
-// ── Toast ──
-function showToast(msg){
-  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2200);
-}
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
 
-// ── Init ──
 renderPrompt();
 </script>
 </body>
